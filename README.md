@@ -7,8 +7,8 @@
 
 `cd ~`<br>
 `pkg install git`<br>
-`git clone https://github.com/imam1912/KotMux.git`<br>
-`cd KotMux`<br>
+`git clone https://github.com/IMTIAZ-X/Ktmax.git`<br>
+`cd KtMax`<br>
 `bash compiler.sh`
 
 # Preview
