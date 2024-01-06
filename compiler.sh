@@ -13,11 +13,11 @@ FILE="/data/data/com.termux/files/home/KtMax/condition.txt"
 # Check if required packages are already installed
 if [ ! -f "$FILE" ] || [ "$(cat "$FILE")" -eq 0 ]; then
     # Update and upgrade Termux
-    apt update && apt upgrade
+    apt update && apt upgrade -y
 
     # Install OpenJDK 17 and Kotlin
-    pkg install openjdk-17
-    pkg install kotlin
+    pkg install openjdk-17 -y
+    pkg install kotlin -y
 
     # Mark that the packages are installed
     echo "1" > "$FILE"

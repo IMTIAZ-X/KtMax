@@ -1,4 +1,4 @@
-# KotMux
+# KtMax
 
 **KtMax:** Empowering Termux users with a hassle-free shell script for Kotlin code compilation.An easy to use script for compiling **Kotlin** code.
 
