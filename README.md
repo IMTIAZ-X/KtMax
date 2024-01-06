@@ -7,7 +7,7 @@
 
 `cd ~`<br>
 `pkg install git`<br>
-`git clone https://github.com/IMTIAZ-X/Ktmax.git`<br>
+`git clone https://github.com/IMTIAZ-X/KtMax.git`<br>
 `cd KtMax`<br>
 `bash compiler.sh`
 
