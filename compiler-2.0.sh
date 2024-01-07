@@ -171,66 +171,9 @@ else
     
 
 }
-
+clear
 php() {
-
-# Path to the file indicating whether the required packages are installed
-FILE="/data/data/com.termux/files/home/KtMax/condition.txt"
-
-# Check if required packages are already installed
-if [ ! -f "$FILE" ] || [ "$(cat "$FILE")" -eq 0 ]; then
-    # Request storage permission
-    termux-setup-storage
-
-    if [ $? -eq 0 ]; then
-        echo "${LIGHT_GREEN}Storage Permission Successful"
-    else
-        echo "${LIGHT_RED}Storage Permission not allowed. Exiting."
-        exit 1
-    fi
-
-    echo "${WHITE}All Packages are now Installing. Starting..."
-
-    # Upgrade Termux
-    pkg upgrade -y
-
-    # Update and upgrade Termux
-    apt update && apt upgrade -y
-
-    # Install PHP
-    pkg install php -y
-
-    # Mark that the packages are installed
-    echo "1" > "$FILE"
-
-    # Clear the screen
-    clear
-
-else
-    echo -e "${LIGHT_CYAN}All Packages Are Already Installed"
-    echo
-fi
-
-# Ask the user for the PHP file path
-echo -e "${WHITE}Enter Your PHP File Path Here : "
-read USER_INPUT
-
-# Check if the user provided a file path
-if [ -z "$USER_INPUT" ]; then
-    echo -e "${LIGHT_RED} >>>>>> Invalid File Path. Exiting. <<<<<<${WHITE}"
-    exit 1
-fi
-
-USER_CON="$USER_INPUT"
-MAIN_PATH="${USER_CON%.*}"
-echo
-
-# Run the PHP code
-echo -e "${LIGHT_CYAN}Running PHP Code.....${WHITE}"
-php "$MAIN_PATH.php"
-
-    #logo 
-    logo
+source php.sh
 }
 
 
@@ -261,7 +204,7 @@ $$$$$$\ $$\      $$\ $$$$$$$$\ $$$$$$\  $$$$$$\  $$$$$$$$\
   $$ |  $$$$\  $$$$ |   $$ |     $$ |  $$ /  $$ |    $$  / 
   $$ |  $$\$$\$$ $$ |   $$ |     $$ |  $$$$$$$$ |   $$  /  
   $$ |  $$ \$$$  $$ |   $$ |     $$ |  $$  __$$ |  $$  /   
-  $$ |  $$|\$  /$$ |   $$ |     $$ |  $$ |  $$ | $$  /    
+  $$ |  $$  |\$  /$$ |   $$ |     $$ |  $$ |  $$ | $$  /    
 $$$$$$\ $$ | \_/ $$ |   $$ |   $$$$$$\ $$ |  $$ |$$$$$$$$\ 
 \______|\__|     \__|   \__|   \______|\__|  \__|\________|
 EOF
@@ -293,7 +236,7 @@ $$$$$$\ $$\      $$\ $$$$$$$$\ $$$$$$\  $$$$$$\  $$$$$$$$\
   $$ |  $$$$\  $$$$ |   $$ |     $$ |  $$ /  $$ |    $$  / 
   $$ |  $$\$$\$$ $$ |   $$ |     $$ |  $$$$$$$$ |   $$  /  
   $$ |  $$ \$$$  $$ |   $$ |     $$ |  $$  __$$ |  $$  /   
-  $$ |  $$|\$  /$$ |   $$ |     $$ |  $$ |  $$ | $$  /    
+  $$ |  $$  |\$  /$$ |   $$ |     $$ |  $$ |  $$ | $$  /    
 $$$$$$\ $$ | \_/ $$ |   $$ |   $$$$$$\ $$ |  $$ |$$$$$$$$\ 
 \______|\__|     \__|   \__|   \______|\__|  \__|\________|
 EOF
@@ -330,7 +273,7 @@ $$$$$$\ $$\      $$\ $$$$$$$$\ $$$$$$\  $$$$$$\  $$$$$$$$\
   $$ |  $$$$\  $$$$ |   $$ |     $$ |  $$ /  $$ |    $$  / 
   $$ |  $$\$$\$$ $$ |   $$ |     $$ |  $$$$$$$$ |   $$  /  
   $$ |  $$ \$$$  $$ |   $$ |     $$ |  $$  __$$ |  $$  /   
-  $$ |  $$|\$  /$$ |   $$ |     $$ |  $$ |  $$ | $$  /    
+  $$ |  $$  |\$  /$$ |   $$ |     $$ |  $$ |  $$ | $$  /    
 $$$$$$\ $$ | \_/ $$ |   $$ |   $$$$$$\ $$ |  $$ |$$$$$$$$\ 
 \______|\__|     \__|   \__|   \______|\__|  \__|\________|
 EOF
