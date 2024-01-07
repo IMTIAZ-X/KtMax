@@ -62,6 +62,9 @@ BG_RESET='\e[49m'  # Reset background color
 # Path to the file indicating whether the required packages are installed
 FILE="/data/data/com.termux/files/home/KtMax/condition-2.0.txt"
 
+termux-setup-storage
+pkg upgrade
+
 # Clear the screen
     clear
     
@@ -173,7 +176,7 @@ else
 }
 clear
 php() {
-source php.sh
+source op.sh
 }
 
 
@@ -297,9 +300,17 @@ select_operation() {
 # Ask the user for the operation
 echo -e "${YELLOW}Select an operation:"
 echo -e "1. Kotlin Compiler"
-echo -e "2. Compile and Run PHP Code"
+echo -e "2. PHP Compiler and Run Code"
 echo -e "3. Upgrade Termux"
 echo -e "4. Exit tool"
+
+echo -e "5. C Compiler"
+echo -e "6. C# / C++ Compiler"
+echo -e "7. R Compiler"
+echo -e "8. java Compiler"
+echo -e "9. Ai Compiler"
+echo -e "10. more"
+
 echo -e "${LIGHT_RED}Select an operation:${LIGHT_YELLOW}"
 read OPERATION
 
