@@ -87,25 +87,36 @@ echo -e "${green}                       	Devoloped By: IMTIAZ           ${color_
 echo -e "                        ${white}Version : 31.0${color_off}"
 echo -e "${magenta}================================================================${color_off}"
 
+# Ask the user for the operation
+echo -e "${YELLOW}Select an operation:"
+echo -e "1. Compile and Run Kotlin Code"
+echo -e "2. Upgrade"
+echo -e "3. Exit tool"
+read OPERATION
     
-# Check if required packages are already installed
+
+case $OPERATION in
+    1)
+    # Check if required packages are already installed
 if [ ! -f "$FILE" ] || [ "$(cat "$FILE")" -eq 0 ]; then
     # Request storage permission
     termux-setup-storage
 
     if [ $? -eq 0 ]; then
-        echo "${LIGHT_GREEN}Storage Permission Successful"
+        echo -e "${LIGHT_GREEN}Storage Permission Successful"
+        echo
     else
-        echo "${LIGHT_RED}Storage Permission not allowed. Exiting."
+        echo -e "${LIGHT_RED}Storage Permission not allowed. Exiting."
         exit 1
-        
+        echo
     fi
 
-    echo "${ORANGE}All Packages are now Installing. Starting..."
+    echo -e "${ORANGE}All Packages are now Installing. Starting..."
+    echo
 
 	pkg upgrade
 	
-	pkg update && upgrade
+	pkg update && upgrade -y
 	
     # Update and upgrade Termux
     apt update && apt upgrade -y
@@ -124,7 +135,7 @@ else
     echo -e "${LIGHT_CYAN}All Packages Are Already Installed"
     echo
 fi
-
+    
 # Ask the user for the Kotlin file path
 echo -e "${DARK_YELLOW}Enter Your Kotlin File Path Here : ${LIGHT_GREEN}"
 read USER_INPUT
@@ -178,3 +189,17 @@ else
     echo -e "${DARK_RED} >>>>>> Compilation Failed! Check for Errors. <<<<<<${LIGHT_CYAN}"
     
 fi
+;;
+    2)
+        # Upgrade Termux
+        apt update && apt upgrade -y
+        echo -e "${CYAN} >>>>>> Termux Upgraded Successfully!! <<<<<<${YELLOW}"
+        ;;
+    3)
+        echo -e "${CYAN} >>>>>> Exiting the tool. <<<<<<${YELLOW}"
+        exit 0
+        ;;
+    *)
+        echo -e "${CYAN} >>>>>> Invalid Option! Exiting. <<<<<<${YELLOW}"
+        ;;
+esac
